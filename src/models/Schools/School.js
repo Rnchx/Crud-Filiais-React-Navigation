@@ -1,4 +1,4 @@
-class Branch {
+export default class School {
   constructor(nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade, cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel) {
 
     this.nome = nome,
