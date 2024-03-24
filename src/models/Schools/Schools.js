@@ -1,43 +1,30 @@
+import { mockedSchools } from "../../data/branchs/data";
+import School from "./School";
+
 class SchoolsList {
   constructor() {
     this.schools = [];
   }
 
-  createSchools(school) {
-    this.schools.push(school);
-  }
-
-  getAllSchools(data) {
-    const { nome } = data;
-
-    if (nome) {
-      return this.getSchoolByName(nome);
-    }
-
+  getAll() {
     return this.schools;
   }
 
-  getSchoolByName(nome) {
-    if (nome) {
-      nome = nome.toLowerCase();
-    }
-
-    const schoolFilter = this.schools.filter((school) => {
-      const schoolName = nome == undefined || school.nome.toLowerCase().includes(nome);
-
-      return schoolName;
-    })
-
-    return schoolFilter;
-  }
-
-  getSchoolById(id) {
+  get(id) {
     return this.schools.find((school) => school.id == id);
   }
 
-  UpdateSchool(nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade, cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel) {
+  add(school) {
+    this.schools.push(school);
+  }
 
-    const school = this.getSchoolById(id);
+  delete(id) {
+   this.schools = this.schools.filter((school) => school.id !== id);
+  }
+
+  Update(nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade, cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel) {
+
+    const school = this.get(id);
 
     if (school) {
       school.nome = nome;
@@ -58,10 +45,13 @@ class SchoolsList {
 
     return school;
   }
-
-  deleteSchool(id) {
-    return this.schools = this.schools.filter((school) => school.id !== id);
-  }
 }
 
-export default SchoolsList;
+const schoolsRepository = new SchoolsList();
+const newSchool = new School(mockedSchools.nome, mockedSchools.fundacao, mockedSchools.corPrimaria, mockedSchools.corSecundaria,
+   mockedSchools.qntdFuncionarios, mockedSchools.qntddAlunos, mockedSchools.qntddTurmas, mockedSchools.bairro, mockedSchools.cidade,
+    mockedSchools.cep, mockedSchools.telefone, mockedSchools.email, mockedSchools.nomeDoResponsavel, mockedSchools.cargoDoResponsavel || 0);
+
+    schoolsRepository.add(newSchool);
+
+export default schoolsRepository;

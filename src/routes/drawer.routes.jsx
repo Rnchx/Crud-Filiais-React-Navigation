@@ -3,7 +3,7 @@ import { Feather } from "@expo/vector-icons";
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
-import Category from "../screens/Category";
+import Category from "../screens/Form";
 import { School } from "../models/Schools/School";
 
 const Drawer = createDrawerNavigator();

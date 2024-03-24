@@ -1,0 +1,51 @@
+import { useState, useEffect } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
+
+import styles from "./styles";
+import Title from "../../components/Title";
+import schoolsRepository from "../../models/Schools/Schools";
+
+export default function Schools() {
+  const navigation = useNavigation();
+  const isFocused = useIsFocused();
+  const [allSchools, setAllSchools] = useState([]);
+
+  useEffect(() => {
+    if (isFocused) {
+      const schools = schoolsRepository.getAll();
+      setAllSchools(schools);
+    }
+  }, [isFocused]);
+
+  return (
+    <View style={styles.container}>
+      <Title title="Escolas" />
+      <Text>Escolas Cadastradas</Text>
+
+
+      {allSchools.length > 0 ? (
+        <View>
+          {allSchools.map((school) => (
+            <View key={school.id} style={styles.schoolItem}>
+              <View>
+                <Text style={styles.schoolName}>{school.nome}</Text>
+              </View>
+
+              <View style={styles.schoolActions}>
+                <TouchableOpacity
+                  style={styles.detailsButton}
+                  onPress={() => navigation.navigate("Profile", { data: school })}
+                >
+                  <Text>Detalhes</Text>
+                </TouchableOpacity>
+              </View>
+              </View>
+          ))}
+        </View>
+      ) : (
+        <Text>Não há escolas cadastradas</Text>
+      )}
+    </View>
+  );
+}

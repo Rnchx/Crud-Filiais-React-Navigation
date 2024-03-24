@@ -1,4 +1,4 @@
-export const mockedBranchs = [
+export const mockedSchools = [
   {
     "nome": "Escola Estadual Castro Alves",
     "fundacao": "1965-08-25",
