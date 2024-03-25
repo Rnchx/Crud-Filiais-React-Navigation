@@ -7,9 +7,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#202020",
   },
+  titulo: {
+    color: "#fff",
+    fontWeight: "bold",
+    fontSize: 40,
+  },
   texto: {
     color: "white",
-
   }
 });
 

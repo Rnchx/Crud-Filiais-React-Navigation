@@ -24,7 +24,7 @@ export default function Profile({ route }) {
       <Title title="Profile" />
 
       {data ? (
-        <Text>Detalhes do Escola</Text>
+        <Text>Detalhes da Escola</Text>
       ) : (
         <Text>Selecione uma escola para exibir seus detalhes</Text>
       )}
