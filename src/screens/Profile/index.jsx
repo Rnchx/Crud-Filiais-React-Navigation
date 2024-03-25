@@ -11,7 +11,7 @@ export default function Profile({ route }) {
   const { data } = route.params;
 
   const editSchool = () => {
-    navigation.navigate("Form", {school: data, edit: true});
+    navigation.navigate("Form", { school: data, edit: true });
   }
 
   const deleteSchool = () => {
@@ -23,10 +23,10 @@ export default function Profile({ route }) {
     <View style={styles.container}>
       <Title title="Profile" />
 
-      {data? (
+      {data ? (
         <Text>Detalhes do Escola</Text>
-        ) : (
-          <Text>Selecione uma escola para exibir seus detalhes</Text>
+      ) : (
+        <Text>Selecione uma escola para exibir seus detalhes</Text>
       )}
 
       <View style={styles.school}>

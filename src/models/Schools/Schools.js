@@ -19,14 +19,15 @@ class SchoolsList {
   }
 
   delete(id) {
-   this.schools = this.schools.filter((school) => school.id !== id);
+    this.schools = this.schools.filter((school) => school.id !== id);
   }
 
-  Update(nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade, cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel) {
+  Update(id, nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade, cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel) {
 
     const school = this.get(id);
 
     if (school) {
+      school.id = id;
       school.nome = nome;
       school.fundacao = fundacao;
       school.corPrimaria = corPrimaria;
@@ -48,10 +49,11 @@ class SchoolsList {
 }
 
 const schoolsRepository = new SchoolsList();
-const newSchool = new School(mockedSchools.nome, mockedSchools.fundacao, mockedSchools.corPrimaria, mockedSchools.corSecundaria,
-   mockedSchools.qntdFuncionarios, mockedSchools.qntddAlunos, mockedSchools.qntddTurmas, mockedSchools.bairro, mockedSchools.cidade,
-    mockedSchools.cep, mockedSchools.telefone, mockedSchools.email, mockedSchools.nomeDoResponsavel, mockedSchools.cargoDoResponsavel || 0);
+mockedSchools.map((school) => {
+  const newSchool = new School(school.nome, school.fundacao, school.corPrimaria, school.corSecundaria,
+    school.qntdFuncionarios, school.qntddAlunos, school.qntddTurmas, school.bairro, school.cidade,
+    school.cep, school.telefone, school.email, school.nomeDoResponsavel, school.cargoDoResponsavel || 0);
 
-    schoolsRepository.add(newSchool);
-
+  schoolsRepository.add(newSchool);
+})
 export default schoolsRepository;
