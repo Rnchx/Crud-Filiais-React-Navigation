@@ -29,30 +29,30 @@ const TabRoutes = () => {
             <Feather
               name="home"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#DC143C" : "#202020"}
             />
           ),
-          tabBarLabel: "Inicial",
-          tabBarActiveTintColor: "#131313",
-          tabBarInactiveTintColor: "#D6D6D6",
+          tabBarLabel: "Início",
+          tabBarActiveTintColor: "#DC143C",
+          tabBarInactiveTintColor: "#202020",
         }}
       />
 
       <Tab.Screen
         name="Schools"
-        component={ Schools}
+        component={Schools}
         initialParams={{ schools }}
         options={{
           tabBarIcon: ({ focused }) => (
             <FontAwesome5
               name="school"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#DC143C" : "#202020"}
             />
           ),
           tabBarLabel: "Escolas",
-          tabBarActiveTintColor: "#131313",
-          tabBarInactiveTintColor: "#D6D6D6",
+          tabBarActiveTintColor: "#DC143C",
+          tabBarInactiveTintColor: "#202020",
         }}
       />
 
@@ -61,15 +61,16 @@ const TabRoutes = () => {
         component={Profile}
         initialParams={{ data: mockedBranchs }}
         options={{
+          tabBarItemStyle: { display: "none" },
           tabBarIcon: ({ focused }) => (
             <FontAwesome6
-             name="school-circle-exclamation"
+              name="school-circle-exclamation"
               size={24}
-               color={focused ? "#131313" : "#D6D6D6"} />
+              color={focused ? "#DC143C" : "#202020"} />
           ),
           tabBarLabel: "Perfil",
-          tabBarActiveTintColor: "#131313",
-          tabBarInactiveTintColor: "#D6D6D6",
+          tabBarActiveTintColor: "#DC143C",
+          tabBarInactiveTintColor: "#202020",
         }}
       />
 
@@ -82,12 +83,12 @@ const TabRoutes = () => {
             <Feather
               name="list"
               size={24}
-              color={focused ? "#131313" : "#D6D6D6"}
+              color={focused ? "#DC143C" : "#202020"}
             />
           ),
           tabBarLabel: "Cadastro",
-          tabBarActiveTintColor: "#131313",
-          tabBarInactiveTintColor: "#D6D6D6",
+          tabBarActiveTintColor: "#DC143C",
+          tabBarInactiveTintColor: "#202020",
         }}
       />
     </Tab.Navigator>
