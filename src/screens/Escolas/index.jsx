@@ -20,9 +20,10 @@ export default function Schools() {
 
   return (
     <View style={styles.container}>
-      <Title title="Escolas" />
-      <Text>Escolas Cadastradas</Text>
-
+      <Text style={styles.title1}>Escolas</Text>
+      <View style={styles.titlePage}>
+      <Text style={styles.title}>cadastradas</Text>
+      </View>
 
       {allSchools.length > 0 ? (
         <View>
@@ -37,7 +38,7 @@ export default function Schools() {
                   style={styles.detailsButton}
                   onPress={() => navigation.navigate("Profile", { data: school })}
                 >
-                  <Text>Detalhes</Text>
+                  <Text style={styles.textButton}>Detalhes</Text>
                 </TouchableOpacity>
               </View>
               </View>

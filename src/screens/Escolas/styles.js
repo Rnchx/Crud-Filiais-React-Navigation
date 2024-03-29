@@ -5,6 +5,19 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 50,
     alignItems: "center",
+    backgroundColor: "#202020"
+  },
+  title1: {
+    fontSize: 25,
+    color: "white",
+    fontWeight: "bold"
+  },
+  titlePage: {
+    margin: 10,
+  },
+  title: {
+    color: "#DAA520",
+    fontWeight: "800"
   },
   schoolItem: {
     flexDirection: "row",
@@ -13,13 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  schoolDetailButton: {
-    padding: 10,
-    borderRadius: 5,
-    backgroundColor: "#f0f0f0",
-    marginRight: 10,
+    borderBottomColor: "#DAA520",
   },
   schoolActions: {
     flexDirection: "row",
@@ -27,7 +34,7 @@ const styles = StyleSheet.create({
   },
   schoolName: {
     fontSize: 16,
-    color: "#333",
+    color: "#D8D8D8",
     fontWeight: "bold",
   },
   editButton: {
@@ -41,9 +48,13 @@ const styles = StyleSheet.create({
   detailsButton: {
     padding: 5,
     borderRadius: 5,
-    backgroundColor: "#ADD8E6",
+    backgroundColor: "#DC143C",
     minWidth: 70,
     alignItems: "center",
+  },
+  textButton: {
+    color: "white",
+    fontWeight: "700"
   },
 });
 
