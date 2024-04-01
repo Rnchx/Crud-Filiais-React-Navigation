@@ -1,9 +1,9 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useState, useEffect } from "react";
 
 import styles from "./styles";
-import Title from "../../components/Title";
+import StyleTextInput from "../../components/Text/index"
 
 import schoolsRepository from "../../models/Schools/Schools";
 import School from "../../models/Schools/School";
@@ -56,11 +56,16 @@ export default function Form({ route }) {
       schoolsRepository.Update(school.id, nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade,
         cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel || 0);
       clearInputs();
-    } else {
-      const newSchool = new School(nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade,
-        cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel || 0);
-      schoolsRepository.add(newSchool);
-      clearInputs();
+      if (nome == "" || fundacao == "" || corPrimaria == "" || corSecundaria == "", qntdFuncionarios == "" ||
+       qntddAlunos == "" || qntddTurmas == "" || bairro == "" || cidade == "" || cep == "" || telefone == "" ||
+       email == "" || nomeDoResponsavel == "" || cargoDoResponsavel == "") {
+        clearInputs();
+      }else {
+        const newSchool = new School(nome, fundacao, corPrimaria, corSecundaria, qntdFuncionarios, qntddAlunos, qntddTurmas, bairro, cidade,
+          cep, telefone, email, nomeDoResponsavel, cargoDoResponsavel || 0);
+        schoolsRepository.add(newSchool);
+        clearInputs();
+      }
     }
     navigation.navigate("Schools");
   }
@@ -87,112 +92,116 @@ export default function Form({ route }) {
 
   return (
     <View style={styles.container}>
-      <Title title={isUpdate ? "Editar Escola" : "Nova Escola"} />
+      <Text style={styles.title}>{isUpdate ? "Editar Escola" : "Crie sua Escola"}</Text>
+      <ScrollView>
       <TextInput
-        placeholder="Digite o nome da Escola"
+        placeholder="nome da escola"
         style={styles.schoolInput}
         onChangeText={setNome}
         value={nome}
       />
       <TextInput
-        placeholder="Digite o ano de Fundação da Escola"
+        placeholder="ano de Fundação da Escola"
         style={styles.schoolInput}
         onChangeText={setFundacao}
         value={fundacao}
         keyboardType="numeric"
       />
       <TextInput
-        placeholder="Digite a cor Primária representante da Escola"
+        placeholder="cor Primária representante da Escola"
         style={styles.schoolInput}
         onChangeText={setCorPrimaria}
         value={corPrimaria}
       />
       <TextInput
-        placeholder="Digite a cor Secundária representante da Escola"
+        placeholder="cor Secundária representante da Escola"
         style={styles.schoolInput}
         onChangeText={setCorSecundaria}
         value={corSecundaria}
       />
       <TextInput
-        placeholder="Digite a quantidade de funcionários que trabalham na instituição"
+        placeholder="quantidade de funcionários"
         style={styles.schoolInput}
         onChangeText={setQntddFuncionarios}
         value={qntdFuncionarios}
         keyboardType="numeric"
       />
       <TextInput
-        placeholder="Digite a quantidade de Alunos que estudam na instituição"
+        placeholder="quantidade de Alunos"
         style={styles.schoolInput}
         onChangeText={setQntddAlunos}
         value={qntddAlunos}
         keyboardType="numeric"
       />
       <TextInput
-        placeholder="Digite a quantidade de turmas que existem na instituição"
+        placeholder="quantidade de turmas"
         style={styles.schoolInput}
         onChangeText={setQntddTurmas}
         value={qntddTurmas}
         keyboardType="numeric"
       />
       <TextInput
-        placeholder="Digite o bairro que a instuição é localizada"
+        placeholder="bairro que a instuição é localizada"
         style={styles.schoolInput}
         onChangeText={setBairro}
         value={bairro}
       />
       <TextInput
-        placeholder="Digite a cidade onde a instituição é localizada"
+        placeholder="cidade onde a instituição é localizada"
         style={styles.schoolInput}
         onChangeText={setCidade}
         value={cidade}
       />
       <TextInput
-        placeholder="Digite o CEP da instituição"
+        placeholder="CEP da instituição"
         style={styles.schoolInput}
         onChangeText={setCep}
         value={cep}
         keyboardType="numeric"
-        maxLength={8}
       />
       <TextInput
-        placeholder="Digite o telefone da instituição"
+        placeholder="telefone da instituição"
         style={styles.schoolInput}
         onChangeText={setTelefone}
         value={telefone}
-        keyboardType="numeric"
+        keyboardType="name-phone-pad"
         maxLength={11}
       />
       <TextInput
-        placeholder="Digite o email da instituição"
+        placeholder="email da instituição"
         style={styles.schoolInput}
         onChangeText={setEmail}
         value={email}
+        keyboardType="email-address"
         maxLength={100} 
       />
       <TextInput
-        placeholder="Digite o nome do responsável da instituição"
+        placeholder="nome do responsável da instituição"
         style={styles.schoolInput}
         onChangeText={setNomeDoResponsavel}
         value={nomeDoResponsavel}
         maxLength={100} 
       />
       <TextInput
-        placeholder="Digite o cargo do responsável pela instituição"
+        placeholder="cargo do responsável pela instituição"
         style={styles.schoolInput}
         onChangeText={setCargoDoResponsavel}
         value={cargoDoResponsavel}
         maxLength={100} 
       />
 
+      <View style={styles.containerButton}>
       <TouchableOpacity style={styles.button} onPress={handleSchoolAction}>
-        <Text>{isUpdate ? "Salvar Alterações" : "Fundar Escola"}</Text>
+        <Text style={styles.text}>{isUpdate ? "Salvar Alterações" : "Fundar Escola"}</Text>
       </TouchableOpacity>
 
       {isUpdate && (
-        <TouchableOpacity style={styles.button} onPress={clearInputs}>
-          <Text>Cancelar Edição</Text>
+        <TouchableOpacity style={styles.buttonCancel} onPress={clearInputs}>
+          <Text style={styles.text}>Cancelar Edição</Text>
         </TouchableOpacity>
       )}
+      </View>
+      </ScrollView>
     </View>
   );
 }

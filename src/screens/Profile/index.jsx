@@ -21,16 +21,16 @@ export default function Profile({ route }) {
 
   return (
     <View style={styles.container}>
-      <Title title="Profile" />
+      <Text style={styles.title}>{data.nome}</Text>
 
       {data ? (
-        <Text>Detalhes da Escola</Text>
+        <Text style={styles.textButton}>Informações da escola</Text>
       ) : (
         <Text>Selecione uma escola para exibir seus detalhes</Text>
       )}
 
       <View style={styles.school}>
-        <Title title="School" />
+        <Text style={styles.subtitleDetalhes}>Detalhes</Text>
         <Text style={styles.text}>{data.nome}</Text>
         <Text style={styles.text}>{data.fundacao}</Text>
         <Text style={styles.text}>{data.corPrimaria}</Text>
@@ -47,10 +47,10 @@ export default function Profile({ route }) {
 
         <View style={styles.schoolActions}>
           <TouchableOpacity style={styles.editButton} onPress={editSchool}>
-            <Text>Editar</Text>
+            <Text style={styles.textButton}>Editar</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.deleteButton} onPress={deleteSchool}>
-            <Text>Excluir</Text>
+            <Text style={styles.textButton}>Excluir</Text>
           </TouchableOpacity>
         </View>
       </View>
