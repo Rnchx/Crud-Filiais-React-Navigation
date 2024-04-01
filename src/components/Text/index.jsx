@@ -10,4 +10,4 @@ const StyleTextInput = ({ texto }) => {
   );
 };
 
-export default Title;
+export default StyleTextInput;
